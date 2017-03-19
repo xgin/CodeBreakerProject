@@ -4,7 +4,10 @@ let attempt = document.getElementById('attempt');
 function guess() {
     let input = document.getElementById('user-guess');
     //add functionality to guess function here
-    setHiddenFields();
+    if (answer.value === '') {
+        setHiddenFields();
+    }
+
     if (!validateInput(input.value)) {
         return false;
     }
@@ -24,8 +27,6 @@ function guess() {
 
 //implement new functions here
 function setHiddenFields() {
-    if (answer.value !== '' || attempt.value !== '') return;
-
     answer.value = Math.floor(Math.random() * 9999).toString();
     while (answer.value.length < 4) {
         answer.value = '0' + answer.value;
